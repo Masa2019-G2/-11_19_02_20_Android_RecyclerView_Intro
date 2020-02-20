@@ -52,9 +52,15 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         notifyItemInserted(1);
     }
 
-    public void remove(){
-        list.remove(2);
-        notifyItemRemoved(2);
+    public void remove(int index){
+        list.remove(index);
+        notifyItemRemoved(index);
+    }
+
+    public void move(int from, int to){
+        Person p = list.remove(from);
+        list.add(to,p);
+        notifyItemMoved(from, to);
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder{
